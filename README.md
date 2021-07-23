@@ -38,4 +38,5 @@ This package created for convert between 2 currencies by using currencies.js fil
    ```
 ## Command
 If you want to manually update currencies from cache, then run:
+
 ```php artisan shopify-currency:cache```
