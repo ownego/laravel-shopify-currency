@@ -29,5 +29,7 @@
         "aliases": {
             "ShopifyCurrency": "Ownego\\LaravelShopifyCurrency\\Facades\\ShopifyCurrency"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
