@@ -1,0 +1,33 @@
+{
+    "name": "ownego/laravel-shopify-currency",
+    "description": "Currency converter using Shopify's currencies cdn file",
+    "keywords": ["laravel", "shopify", "currencty", "converter"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TrungLD",
+            "email": "vn.trungld@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.1",
+        "ext-json": "*",
+        "illuminate/cache": ">=5.1",
+        "illuminate/console": ">=5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ownego\\LaravelShopifyCurrency\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ownego\\LaravelShopifyCurrency\\LaravelShopifyCurrencyServiceProvider"
+            ]
+        },
+        "aliases": {
+            "ShopifyCurrency": "Ownego\\LaravelShopifyCurrency\\Facades\\ShopifyCurrency"
+        }
+    }
+}
