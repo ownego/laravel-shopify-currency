@@ -3,7 +3,9 @@ This package created for convert between 2 currencies by using currencies.js fil
 ## Installation
 1. Install package
 
-    ```composer require ownego/laravel-shopify-currency```
+    ```
+    composer require ownego/laravel-shopify-currency
+    ```
 2. Optional: add the service provider
 
    ```php
@@ -14,7 +16,9 @@ This package created for convert between 2 currencies by using currencies.js fil
    ```
 3. Optional: publish config
 
-   ```php artisan vendor:publish --provider=Ownego\LaravelShopifyCurrency\LaravelShopifyCurrencyServiceProvider```
+   ```
+   php artisan vendor:publish --provider=Ownego\LaravelShopifyCurrency\LaravelShopifyCurrencyServiceProvider
+   ```
 4. Optional: add facade
 
    ```php
@@ -39,4 +43,6 @@ This package created for convert between 2 currencies by using currencies.js fil
 ## Command
 If you want to manually update currencies from cache, then run:
 
-```php artisan shopify-currency:cache```
+```
+php artisan shopify-currency:cache
+```
