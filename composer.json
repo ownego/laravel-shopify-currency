@@ -21,6 +21,9 @@
         }
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "0.4"
+        },
         "laravel": {
             "providers": [
                 "Ownego\\LaravelShopifyCurrency\\LaravelShopifyCurrencyServiceProvider"
