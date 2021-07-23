@@ -23,7 +23,7 @@ class LaravelShopifyCurrencyServiceProvider extends ServiceProvider
             ], 'shopify-currency-config');
 
             $this->commands([
-                Console\CacheShopifyCurrencies::class,
+                Console\CacheShopifyCurrency::class,
             ]);
         }
     }

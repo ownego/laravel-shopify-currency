@@ -6,14 +6,14 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 use Ownego\LaravelShopifyCurrency\LaravelShopifyCurrency;
 
-class CacheShopifyCurrencies extends Command
+class CacheShopifyCurrency extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = "shopify-currencies:cache";
+    protected $signature = "shopify-currency:cache";
 
     /**
      * The console command description.
