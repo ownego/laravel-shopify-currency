@@ -1,5 +1,5 @@
 ## Introduction
-This package created for convert between 2 difference currency by using currencies file provided by Shopify.
+This package created for convert between 2 currencies by using currencies.js file provided by Shopify.
 ## Installation
 1. Install package
 
@@ -24,13 +24,13 @@ This package created for convert between 2 difference currency by using currenci
    ],
    ```
 ## Usage
-1. Convert between 2 difference currencies
+1. Convert
    ```
    use Ownego\LaravelShopifyCurrency\Facades\ShopifyCurrency;
 
    $result = ShopifyCurrency::convert(100, 'eur', 'usd');
    ```
-2. Get rate between 2 difference currencies
+2. Get rate
    ```
    use Ownego\LaravelShopifyCurrency\Facades\ShopifyCurrency;
 
