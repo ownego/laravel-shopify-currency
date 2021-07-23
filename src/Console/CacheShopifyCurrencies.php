@@ -30,7 +30,7 @@ class CacheShopifyCurrencies extends Command
     public function handle(LaravelShopifyCurrency $currency)
     {
         $this->info('Caching currencies');
-        $data = $currency->fetch();
+        $data = $currency->fetchRates();
 
         Cache::put(config('shopify-currency.cache-key'), $data, config('shopify-currency.cache-ttl'));
 

@@ -6,6 +6,19 @@ use Illuminate\Support\Facades\Cache;
 
 class LaravelShopifyCurrency
 {
+    protected $rates;
+
+    public function __construct()
+    {
+        $this->rates = Cache::remember(
+            config('shopify-currency.cache-key'),
+            config('shopify-currency.cache-ttl'),
+            function () {
+                return $this->fetchRates();
+            }
+        );
+    }
+
     /**
      * Convert currency
      *
@@ -14,15 +27,32 @@ class LaravelShopifyCurrency
      * @param $to
      * @return float|int
      */
-    public function convert($amount, $from, $to)
+    public function convert($amount, $from, $to = 'usd')
     {
-        $currencies = $this->get();
+        $result = $amount * $this->rate($from, $to);
+
+        if (($precision = config('shopify-currency.round-precision')) !== null) {
+            return round($result, $precision);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get rate
+     *
+     * @param $from
+     * @param $to
+     * @return float|int
+     */
+    public function rate($from, $to = 'usd')
+    {
         $from = strtoupper($from);
         $to = strtoupper($to);
-        $from_rate = isset($currencies[$from]) ? $currencies[$from] : 1;
-        $to_rate = isset($currencies[$to]) ? $currencies[$to] : 1;
+        $from_rate = isset($this->rates[$from]) ? $this->rates[$from] : 1;
+        $to_rate = isset($this->rates[$to]) ? $this->rates[$to] : 1;
 
-        return ($amount * $currencies[$from]) / $currencies[$to];
+        return $from_rate / $to_rate;
     }
 
     /**
@@ -30,23 +60,17 @@ class LaravelShopifyCurrency
      *
      * @return mixed
      */
-    public function get()
+    public function getRates()
     {
-        return Cache::remember(
-            config('shopify-currency.cache-key'),
-            config('shopify-currency.cache-ttl'),
-            function () {
-                return $this->fetch();
-            }
-        );
+        return $this->rates;
     }
 
     /**
-     * Fetch currencies
+     * Fetch rates
      *
      * @return mixed
      */
-    public function fetch()
+    public function fetchRates()
     {
         try {
             $js = file_get_contents(config('shopify-currency.url'));
