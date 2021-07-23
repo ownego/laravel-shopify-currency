@@ -1,5 +1,5 @@
 ## Introduction
-//
+This package created for convert between 2 difference currency by using currencies file provided by Shopify.
 ## Installation
 1. Install package
 
