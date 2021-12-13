@@ -74,11 +74,20 @@ class LaravelShopifyCurrency
     {
         try {
             $js = file_get_contents(config('shopify-currency.url'));
-            $pattern = '/rates:(.*})/m';
+            $pattern = '/rates:{(.*)},/m';
 
             preg_match_all($pattern, $js, $matches);
 
-            return json_decode($matches[1][0], JSON_OBJECT_AS_ARRAY);
+            $rates = explode(',', $matches[1][0]);
+            $result = [];
+
+            foreach ($rates as $rate) {
+                $data = explode(':', $rate);
+
+                $result[$data[0]] = $data[1];
+            }
+
+            return $result;
         } catch (\Exception $e) {
             return [];
         }
